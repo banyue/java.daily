@@ -17,13 +17,13 @@ public class CallableAndFuture4 {
         ExecutorService service = Executors.newSingleThreadExecutor();  //Executors.newCachedThreadPool()
         List<Future<Integer>> futureList = new ArrayList<Future<Integer>>();
 
-        for(int i = 0;i < 5;i++) {
+        for(int i = 0;i < 1000;i++) {
             Future<Integer> future = service.submit(new Callable<Integer>() {
-                @Override
                 public Integer call() throws Exception {
-                    int ran = new Random().nextInt(100);
-                    System.out.println(": " + ran);
-                    return ran;
+                    int a = new Random().nextInt(100);
+                    int b = new Random().nextInt(100);
+                    System.out.println("a + b = " + add(a,b));
+                    return add(a,b);
                 }
             });
             futureList.add(future);
@@ -36,5 +36,9 @@ public class CallableAndFuture4 {
                 e.printStackTrace();
             }
         }
+    }
+
+    private static int add(int a, int b) {
+        return a + b;
     }
 }
