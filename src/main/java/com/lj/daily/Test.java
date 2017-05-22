@@ -186,5 +186,7 @@ public class Test {
 
         String s = "9.01";
         System.out.println(s.replaceAll("0+?$","").replaceAll("[.]$",""));
+
+        System.out.println("hello world");
     }
 }
